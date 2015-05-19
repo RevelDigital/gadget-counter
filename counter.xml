@@ -39,6 +39,7 @@ body
 <script src="https://reveldigital.github.io/gadget-common/third-party/moment-with-langs.min.js" type="text/javascript"></script>
 
 <div id="counter" class="body-style">
+  <div id="container"></div>
 </div>
 
 <SCRIPT type="text/javascript">
@@ -62,6 +63,8 @@ body
 
   function count() {
 
+    console.log('got here 1');
+
     var diff;
     if (up) {
       if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
@@ -77,6 +80,8 @@ body
       }
     }
     
+    console.log('got here 2');
+    
     var txt;
     if (diff < 0 && message != "") {
       txt = "<span>" + message + "</span>";
@@ -84,8 +89,12 @@ body
       txt = "<span>" + boldme + Math.floor(diff.asDays()) + unboldme + " D, " + boldme + diff.hours() + unboldme + " H, " + boldme + diff.minutes() + unboldme + " M, " + boldme + diff.seconds() + unboldme + " S</span>";
     }
 
-    $('#counter').empty().append($(txt));
-      
+    console.log('got here 3');
+
+    $('#container').replaceWith($("<div id=\"container\">" + txt + "</div>")); //.empty().append($(txt));
+    
+    console.log('got here 4');
+    
     setTimeout(count, 1000)
   }
 
