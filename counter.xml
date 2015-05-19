@@ -89,10 +89,12 @@ body
       txt = "<span>" + boldme + Math.floor(diff.asDays()) + unboldme + " D, " + boldme + diff.hours() + unboldme + " H, " + boldme + diff.minutes() + unboldme + " M, " + boldme + diff.seconds() + unboldme + " S</span>";
     }
 
-    console.log('got here 3');
+    console.log('got here 3' + $(txt).html());
 
-    $('#container').replaceWith($("<div id=\"container\">" + txt + "</div>")); //.empty().append($(txt));
+    //$('#container').replaceWith($("<div id=\"container\">" + txt + "</div>")); //.empty().append($(txt));
     
+    $('#counter').html($(txt));
+      
     console.log('got here 4');
     
     setTimeout(count, 1000)
