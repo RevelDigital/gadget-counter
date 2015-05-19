@@ -67,17 +67,17 @@ body
 
     var diff;
     if (up) {
-      if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
-        diff = moment.duration(moment(Client.getDeviceTime()).diff(date));
-      } else {
+      //if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
+      //  diff = moment.duration(moment(Client.getDeviceTime()).diff(date));
+      //} else {
         diff = moment.duration(moment().diff(date));
-      }
+      //}
     } else {
-      if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
-        diff = moment.duration(date.diff(moment(Client.getDeviceTime())));
-      } else {
+      //if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
+      //  diff = moment.duration(date.diff(moment(Client.getDeviceTime())));
+      //} else {
         diff = moment.duration(date.diff(moment()));
-      }
+      //}
     }
     
     console.log('got here 2');
