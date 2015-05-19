@@ -66,18 +66,23 @@ body
     console.log('got here 1');
 
     var diff;
+    var curr;
     if (up) {
-      //if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
-      //  diff = moment.duration(moment(Client.getDeviceTime()).diff(date));
-      //} else {
+      if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
+        curr = Client.getDeviceTime();
+        console.log(curr.toString());
+        diff = moment.duration(moment(curr).diff(date));
+      } else {
         diff = moment.duration(moment().diff(date));
-      //}
+      }
     } else {
-      //if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
-      //  diff = moment.duration(date.diff(moment(Client.getDeviceTime())));
-      //} else {
+      if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
+        curr = Client.getDeviceTime();
+        console.log(curr.toString());
+        diff = moment.duration(date.diff(moment(curr)));
+      } else {
         diff = moment.duration(date.diff(moment()));
-      //}
+      }
     }
     
     console.log('got here 2');
