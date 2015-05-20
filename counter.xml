@@ -39,7 +39,6 @@ body
 <script src="https://reveldigital.github.io/gadget-common/third-party/moment-with-langs.min.js" type="text/javascript"></script>
 
 <div id="counter" class="body-style">
-  <div id="container"></div>
 </div>
 
 <SCRIPT type="text/javascript">
@@ -63,14 +62,12 @@ body
 
   function count() {
 
-    console.log('got here 1');
-
     var diff;
     var curr;
     if (up) {
       if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
         curr = Client.getDeviceTime();
-        console.log(curr.toString());
+        //console.log(curr.toString());
         diff = moment.duration(moment(curr).diff(date));
       } else {
         diff = moment.duration(moment().diff(date));
@@ -78,30 +75,22 @@ body
     } else {
       if (typeof Client != "undefined" && typeof(Client.getDeviceTime) == "function") {
         curr = Client.getDeviceTime();
-        console.log(curr.toString());
+        //console.log(curr.toString());
         diff = moment.duration(date.diff(moment(curr)));
       } else {
         diff = moment.duration(date.diff(moment()));
       }
     }
-    
-    console.log('got here 2');
-    
+        
     var txt;
     if (diff < 0 && message != "") {
       txt = "<span>" + message + "</span>";
     } else {
       txt = "<span>" + boldme + Math.floor(diff.asDays()) + unboldme + " D, " + boldme + diff.hours() + unboldme + " H, " + boldme + diff.minutes() + unboldme + " M, " + boldme + diff.seconds() + unboldme + " S</span>";
     }
-
-    console.log('got here 3' + $(txt).html());
-
-    //$('#container').replaceWith($("<div id=\"container\">" + txt + "</div>")); //.empty().append($(txt));
     
     $('#counter').html($(txt));
-      
-    console.log('got here 4');
-    
+          
     setTimeout(count, 1000)
   }
 
